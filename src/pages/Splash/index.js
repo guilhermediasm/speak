@@ -1,7 +1,8 @@
 import 'react-native-gesture-handler';
 import { connect } from "react-redux";
-import { Button, View, Text } from 'react-native';
+import { Button, View, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import images from '../../assets/images'
 
 function Splash({ navigation, listAuth, logado }) {
 
@@ -23,7 +24,7 @@ function Splash({ navigation, listAuth, logado }) {
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFF' }}>
-            <Text>Splash!</Text>
+            <Image resizeMode={"cover"} source={images.logo} />
         </View>
     );
 }
