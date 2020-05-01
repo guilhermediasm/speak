@@ -15,7 +15,7 @@ import React, { useEffect, useState } from 'react';
 import color from '../../assets/colors'
 import * as parse from '../../components/Parse';
 import { logado, dadoAuth } from '../../store/actions/auth'
-
+import styles from './styles'
 
 function Cadastro({ navigation, logado, dadoAuth }) {
     const [nome, setNome] = useState('')
@@ -64,64 +64,47 @@ function Cadastro({ navigation, logado, dadoAuth }) {
 
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-            <View style={{ flex: 1, backgroundColor: color.primaryColor }}>
-                <View style={{
-                    height: "85%",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    position: "absolute",
-                    borderTopRightRadius: 40,
-                    borderTopLeftRadius: 40,
-                    padding: 20,
-                    backgroundColor: "#FFF"
-                }}>
+            <View style={styles.container}>
+                <View style={styles.painel}>
                     <ScrollView>
-                        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>OLÁ!</Text>
-                        <Text style={{ color: color.cinza }}>Faça seu cadastro para continuar!</Text>
+                        <Text style={styles.ola}>OLÁ!</Text>
+                        <Text style={styles.subTitulo}>Faça seu cadastro para continuar!</Text>
 
                         <View style={{ marginTop: 15 }}>
                             <View >
-                                <Text style={{ fontWeight: 'bold', fontSize: 14 }}>NOME</Text>
-                                <View style={{ borderWidth: 1, height: 40, borderColor: color.cinza }}>
+                                <Text style={styles.descricao}>NOME</Text>
+                                <View style={styles.border}>
                                     <TextInput value={nome} onChangeText={setNome} />
                                 </View>
 
                             </View>
                             <View style={{ marginTop: 10 }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 14 }}>EMAIL</Text>
-                                <View style={{ borderWidth: 1, height: 40, borderColor: color.cinza }}>
+                                <Text style={styles.descricao}>EMAIL</Text>
+                                <View style={styles.border}>
                                     <TextInput value={email} onChangeText={setEmail} />
                                 </View>
 
                             </View>
                             <View style={{ marginTop: 10 }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 14 }}>SENHA</Text>
-                                <View style={{ borderWidth: 1, height: 40, borderColor: color.cinza, flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Text style={styles.descricao}>SENHA</Text>
+                                <View style={styles.borderSenha}>
                                     <TextInput style={{ flex: 1.5 }} secureTextEntry={secure} value={senha} onChangeText={setSenha} />
                                     <Icon style={{ marginRight: 5, alignSelf: 'center' }} name={textSecure} size={30} color={'black'} onPress={() => changeStateSecure()} />
                                 </View>
                             </View>
                             <View style={{ marginTop: 10 }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 14 }}>CONFIRMAR SENHA</Text>
-                                <View style={{ borderWidth: 1, height: 40, borderColor: color.cinza }}>
+                                <Text style={styles.descricao}>CONFIRMAR SENHA</Text>
+                                <View style={styles.borderConfirm}>
                                     <TextInput secureTextEntry={secure} value={confirmSenha} onChangeText={setConfirmSenha} />
                                 </View>
                             </View>
 
                         </View>
-                        <TouchableOpacity onPress={() => cadastrar()} style={{
-                            marginTop: 20,
-                            height: 50,
-                            backgroundColor: color.primaryColor,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: 10
-                        }}>
+                        <TouchableOpacity onPress={() => cadastrar()} style={styles.buttomCadastrar}>
                             <Text style={{ fontSize: 14, color: '#FFF' }} >Finalizar Cadastro</Text>
                         </TouchableOpacity>
 
-                        <Text onPress={() => cancelar()} style={{ textAlign: 'center', marginTop: 15, marginHorizontal: 30, fontSize: 14, color: color.cinza, borderColor: color.cinza, borderBottomWidth: 1 }} >Cancelar</Text>
+                        <Text onPress={() => cancelar()} style={styles.cancelar} >Cancelar</Text>
                     </ScrollView>
                 </View>
             </View>

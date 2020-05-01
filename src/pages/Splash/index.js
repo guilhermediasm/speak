@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Button, View, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import images from '../../assets/images'
-
+import styles from './styles'
 function Splash({ navigation, listAuth, logado }) {
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function Splash({ navigation, listAuth, logado }) {
     }, []);
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFF' }}>
+        <View style={styles.container}>
             <Image resizeMode={"cover"} source={images.logo} />
         </View>
     );

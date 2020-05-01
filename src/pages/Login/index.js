@@ -13,6 +13,8 @@ import color from '../../assets/colors'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as parse from '../../components/Parse';
 import { logado } from '../../store/actions/auth'
+import styles from './styles'
+
 
 function Login({ navigation, listAuth, logado }) {
     const [email, setEmail] = useState('')
@@ -63,60 +65,35 @@ function Login({ navigation, listAuth, logado }) {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: color.primaryColor }}>
-            <View style={{
-                height: "85%",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                position: "absolute",
-                borderTopRightRadius: 40,
-                borderTopLeftRadius: 40,
-                padding: 20,
-                backgroundColor: "#FFF"
-            }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>OLÁ!</Text>
-                <Text style={{ color: color.cinza }}>Faça login para continuar</Text>
+        <View style={styles.container}>
+            <View style={styles.inner}>
+                <Text style={styles.ola}>OLÁ!</Text>
+                <Text style={styles.subtitulo}>Faça login para continuar</Text>
                 <View style={{ marginTop: 30 }}>
                     <View >
-                        <Text style={{ fontWeight: 'bold', fontSize: 14 }}>EMAIL</Text>
-                        <View style={{ borderWidth: 1, height: 40, borderColor: color.cinza }}>
+                        <Text style={styles.descricao}>EMAIL</Text>
+                        <View style={styles.borderEmail}>
                             <TextInput value={email} onChangeText={setEmail} />
                         </View>
 
                     </View>
                     <View style={{ marginTop: 10 }}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 14 }}>SENHA</Text>
-                        <View style={{ borderWidth: 1, height: 40, borderColor: color.cinza, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={styles.descricao}>SENHA</Text>
+                        <View style={styles.borderSenha}>
                             <TextInput style={{ flex: 1.5 }} value={senha} secureTextEntry={secure} onChangeText={setSenha} />
                             <Icon style={{ marginRight: 5, alignSelf: 'center' }} name={textSecure} size={30} color={'black'} onPress={() => changeStateSecure()} />
                         </View>
                     </View>
 
-                    <TouchableOpacity onPress={() => logar()} style={{
-                        marginTop: 35,
-                        height: 50,
-                        backgroundColor: color.primaryColor,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: 10
-                    }}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#FFF' }} >Login</Text>
+                    <TouchableOpacity onPress={() => logar()} style={styles.buttomLogin}>
+                        <Text style={styles.txtButtomLogin} >Login</Text>
                     </TouchableOpacity>
 
                     <View style={{ marginTop: 40 }}>
-                        <Text style={{ color: color.cinza, alignSelf: 'center' }}>Ainda não tem?</Text>
+                        <Text style={styles.txt}>Ainda não tem?</Text>
 
-                        <TouchableOpacity onPress={() => navigation.navigate('Cadastro')} style={{
-
-                            height: 50,
-                            borderWidth: 1,
-                            borderColor: color.cinza,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: 10
-                        }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 14 }} >Crie uma conta</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('Cadastro')} style={styles.txtCadastro}>
+                            <Text style={styles.descricao} >Crie uma conta</Text>
                         </TouchableOpacity>
                     </View>
 

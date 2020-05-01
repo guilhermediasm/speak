@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import colors from '../../assets/colors'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from "react-redux";
-
+import styles from './styles'
 
 function Feed({ navigation, listPost, perfil }) {
 
@@ -23,7 +23,7 @@ function Feed({ navigation, listPost, perfil }) {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#FFF' }}>
+        <View style={styles.principal}>
             {
                 listPost != null ?
                     <FlatList
@@ -33,16 +33,16 @@ function Feed({ navigation, listPost, perfil }) {
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item, index }) =>
                             <>
-                                <View style={{ borderColor: colors.primaryColor, borderRadius: 15, borderWidth: 2, paddingHorizontal: 10, marginTop: 10, elevation: 2 }}>
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 3 }}>
-                                        <Text style={{ fontSize: 10 }}>{item.nomePessoa}</Text>
-                                        <Text style={{ fontSize: 10 }}>{item.dataPost}</Text>
+                                <View style={styles.container}>
+                                    <View style={styles.info}>
+                                        <Text style={styles.infoTxt}>{item.nomePessoa}</Text>
+                                        <Text style={styles.infoTxt}>{item.dataPost}</Text>
                                     </View>
                                     <View style={{ marginTop: 5 }}>
-                                        <Text style={{ fontSize: 13, fontWeight: 'bold', }}>{item.tituloPost}</Text>
-                                        <View style={{ height: 1, backgroundColor: 'black', marginTop: 3, marginRight: 20 }} />
-                                        <View style={{ flexDirection: 'row', marginRight: 10 }}>
-                                            <Text style={{ color: 'black', textAlign: 'left' }}>{item.post}</Text>
+                                        <Text style={styles.titulo}>{item.tituloPost}</Text>
+                                        <View style={styles.linha} />
+                                        <View style={styles.editar}>
+                                            <Text style={styles.postText}>{item.post}</Text>
                                             {
                                                 item.nomePessoa == perfil.nome ?
                                                     <Icon onPress={() => editar(item, index)} style={{ alignSelf: 'flex-end' }} name={"edit"} size={15} color={'black'} />
@@ -52,14 +52,14 @@ function Feed({ navigation, listPost, perfil }) {
                                         </View>
                                     </View>
                                 </View>
-                                <View style={{ height: 2, backgroundColor: colors.primaryColor, marginTop: 10 }} />
+                                <View style={styles.divisao} />
                             </>
 
                         }
 
                     />
                     :
-                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={styles.vazio}>
                         <Icon name={"frown-o"} size={60} color={'black'} />
                         <Text>Parece que não tem nenhum post!</Text>
                     </View>

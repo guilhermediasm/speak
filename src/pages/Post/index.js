@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { publicar } from '../../store/actions/addPost'
 import colors from '../../assets/colors';
 import * as parse from '../../components/Parse';
+import styles from './styles'
 
 
 function Post({ navigation, publicar, perfil, listPost }) {
@@ -96,36 +97,28 @@ function Post({ navigation, publicar, perfil, listPost }) {
     }
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#FFF', paddingHorizontal: 30 }}>
-            <Text style={{ color: colors.cinza }}>Título</Text>
-            <View style={{ height: 30, borderWidth: 1, borderColor: colors.cinza }}>
-                <TextInput style={{ marginBottom: -10, fontWeight: 'bold' }} value={titulo} onChangeText={setTitulo} />
+        <View style={styles.container}>
+            <Text style={styles.text}>Título</Text>
+            <View style={styles.borderTitulo}>
+                <TextInput style={styles.inputTitulo} value={titulo} onChangeText={setTitulo} />
             </View>
             <View style={{ marginTop: 20 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{ color: colors.cinza }}>Escrever o que você deseja publicar</Text>
+                <View style={styles.info}>
+                    <Text style={styles.text}>Escrever o que você deseja publicar</Text>
                     <Text>{cont}/280</Text>
                 </View>
-                <View style={{ height: 100, borderWidth: 1, borderColor: colors.cinza }}>
+                <View style={styles.caixaPost}>
                     <TextInput style={{ marginVertical: -10 }} multiline={true} maxLength={280} value={post} onChangeText={text => changeText(text)} />
                 </View>
 
             </View>
-            <TouchableHighlight onPress={() => publicarPost()} style={{
-
-                marginTop: 35,
-                height: 50,
-                backgroundColor: colors.primaryColor,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 10
-            }}>
+            <TouchableHighlight onPress={() => publicarPost()} style={styles.botaoPost}>
                 <Text style={{ fontSize: 14, color: '#FFF' }} >Postar</Text>
             </TouchableHighlight>
 
-            <Text onPress={() => cancelar()} style={{ textAlign: 'center', marginTop: 15, marginHorizontal: 30, fontSize: 14, color: colors.cinza, borderColor: colors.cinza, borderBottomWidth: 1 }} >Cancelar</Text>
+            <Text onPress={() => cancelar()} style={styles.textOnPress} >Cancelar</Text>
 
-            <Text onPress={() => excluir()} style={{ textAlign: 'center', marginTop: 15, marginHorizontal: 30, fontSize: 14, color: colors.cinza, borderColor: colors.cinza, borderBottomWidth: 1 }} >Excluir</Text>
+            <Text onPress={() => excluir()} style={styles.textOnPress} >Excluir</Text>
         </View>
     );
 }
